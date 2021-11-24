@@ -13,6 +13,6 @@ jobs:
         env:
           GITHUB_BRANCH: ${{ github.ref }}
       - name: Create Pull request if branch is translation job
-        run: gh pr create --b main -l "translation" -r "@javedhalani" -t "New Translations"
+        run: gh pr create --base main -l "translation" -r "@javedhalani" -t "New Translations"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
