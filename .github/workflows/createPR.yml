@@ -1,0 +1,10 @@
+name: Create PR when matched keyword
+on: push
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prints the current branch name
+        run: echo "${GITHUB_BRANCH##*/}"
+        env:
+          GITHUB_BRANCH: ${{ github.ref }}
