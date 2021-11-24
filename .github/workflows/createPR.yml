@@ -4,11 +4,15 @@ jobs:
   create-translationJob-pr:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
       - name: Prints the current branch name
         run: echo "${GITHUB_BRANCH##*/}"
         env:
           GITHUB_BRANCH: ${{ github.ref }}
       - name: Create Pull request if branch is translation job
-        run: cd ../../ | gh pr create -B "main" -l "translation" -r "@javedhalani" -t "New Translations"
+        run: gh pr create -B "main" -l "translation" -r "@javedhalani" -t "New Translations"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
